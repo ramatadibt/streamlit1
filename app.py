@@ -244,11 +244,14 @@ with col10:
 
 llm = HuggingFaceEndpoint(
     repo_id=llm_model, 
+    task="conversational",
     temperature = 0.1,
     max_new_tokens = 1024,
     top_k = 50,
     model_kwargs = {'load_in_8bit': True}
 )
+
+chat = ChatHuggingFace(llm=llm)
 
 
 
@@ -263,7 +266,7 @@ if st.session_state.card1:
     # Add user message to chat history
     # st.session_state.messages.append({"role": "user", "content": p1})
 
-    response1 = llm(p1)
+    response1 = chat.invoke(p1).content
     with st.chat_message("assistant"):
         st.markdown(response1)
     # st.chat_message("assistant").markdown(response1)
@@ -275,7 +278,7 @@ if st.session_state.card2:
     st.chat_message("user").markdown(p2)
     # Add user message to chat history
     # st.session_state.messages.append({"role": "user", "content": p2})
-    response2 = llm(p2)
+    response2 = chat.invoke(p2).content
     with st.chat_message("assistant"):
         st.markdown(response2)
     # st.chat_message("assistant").markdown(response2)
@@ -287,7 +290,7 @@ if st.session_state.card3:
     st.chat_message("user").markdown(p3)
     # Add user message to chat history
     # st.session_state.messages.append({"role": "user", "content": p3})
-    response3 = llm(p3)
+    response3 = chat.invoke(p3).content
     with st.chat_message("assistant"):
         st.markdown(response3)
     # st.chat_message("assistant").markdown(response3)
@@ -300,7 +303,7 @@ if st.session_state.card4:
     st.chat_message("user").markdown(p4)
     # Add user message to chat history
     # st.session_state.messages.append({"role": "user", "content": p4})
-    response4 = llm(p4)
+    response4 = chat.invoke(p4).content
     with st.chat_message("assistant"):
         st.markdown(response4)
     # st.chat_message("assistant").markdown(response4)
@@ -313,7 +316,7 @@ if st.session_state.card5:
     st.chat_message("user").markdown(p5)
     # Add user message to chat history
     # st.session_state.messages.append({"role": "user", "content": p5})
-    response5 = llm(p5)
+    response5 = chat.invoke(p5).content
     with st.chat_message("assistant"):
         st.markdown(response5)
     # st.chat_message("assistant").markdown(response5)
@@ -328,7 +331,7 @@ if st.session_state.card6:
     st.chat_message("user").markdown(p6)
     # Add user message to chat history
     # st.session_state.messages.append({"role": "user", "content": p6})
-    response6 = llm(p6)
+    response6 = chat.invoke(p6).content
     with st.chat_message("assistant"):
         st.markdown(response6)
     # st.chat_message("assistant").markdown(response6)
@@ -359,12 +362,13 @@ if prompt :
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
 
-        response = llm(prompt)
+        response = chat.invoke(prompt).content
         # Display assistant response in chat message container
         with st.chat_message("assistant"):
             st.markdown(response)
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 
 
