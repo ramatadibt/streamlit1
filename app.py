@@ -5,9 +5,9 @@ from langchain_community.chat_models.huggingface import ChatHuggingFace
 from langchain_community.llms import HuggingFaceEndpoint
 from PIL import Image
 
-import os
-HUGGINGFACEHUB_API_TOKEN =  st.secrets['HUGGINGFACEHUB_API_TOKEN']
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = HUGGINGFACEHUB_API_TOKEN
+# import os
+# HUGGINGFACEHUB_API_TOKEN =  st.secrets['HUGGINGFACEHUB_API_TOKEN']
+# os.environ["HUGGINGFACEHUB_API_TOKEN"] = HUGGINGFACEHUB_API_TOKEN
 
 from streamlit_card import card
 
@@ -366,3 +366,4 @@ if prompt :
             st.markdown(response)
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
+
