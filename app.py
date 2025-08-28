@@ -1,8 +1,7 @@
 import streamlit as st 
 # import langchain
-from langchain_community.llms import HuggingFaceHub
-from langchain_community.chat_models.huggingface import ChatHuggingFace
-from langchain_community.llms import HuggingFaceEndpoint
+from langchain_huggingface import ChatHuggingFace
+from langchain_huggingface import HuggingFaceEndpoint
 from PIL import Image
 
 import os
@@ -366,6 +365,7 @@ if prompt :
             st.markdown(response)
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 
 
