@@ -74,7 +74,7 @@ with col1:
 with col2:
      st.write(r"$\textsf{\huge Plug \& Play LLMs}$")
 
-llm_model = col3.selectbox('**Select LLM**', ["google/gemma-1.1-2b-it", "google/gemma-1.1-7b-it",
+llm_model = col3.selectbox('**Select LLM**', ["meta-llama/Llama-3.2-3B-Instruct", "google/gemma-1.1-7b-it",
                           "mistralai/Mistral-7B-Instruct-v0.2","mistralai/Mixtral-8x7B-Instruct-v0.1", 
                           'NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO', 
                          "HuggingFaceH4/zephyr-7b-beta"])
@@ -366,4 +366,5 @@ if prompt :
             st.markdown(response)
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": response})
+
 
